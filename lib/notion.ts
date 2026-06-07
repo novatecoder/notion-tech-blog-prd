@@ -148,6 +148,12 @@ export async function getPublishedPosts(): Promise<Post[]> {
   }
 }
 
+// 발행 글에서 중복 없는 카테고리 목록 (필터 바·정적 경로 생성용)
+export async function getCategories(): Promise<string[]> {
+  const posts = await getPublishedPosts();
+  return [...new Set(posts.map((p) => p.category).filter(Boolean))];
+}
+
 export async function getPostBySlug(
   slug: string
 ): Promise<{ post: Post; blocks: Block[] } | null> {

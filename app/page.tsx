@@ -1,10 +1,14 @@
-import { getPublishedPosts } from "@/lib/notion";
+import { getPublishedPosts, getCategories } from "@/lib/notion";
 import PostCard from "@/components/PostCard";
+import CategoryFilter from "@/components/CategoryFilter";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const posts = await getPublishedPosts();
+  const [posts, categories] = await Promise.all([
+    getPublishedPosts(),
+    getCategories(),
+  ]);
 
   return (
     <div>
@@ -14,6 +18,8 @@ export default async function HomePage() {
           LLM 애플리케이션 개발·에이전트·RAG·운영 노하우
         </p>
       </div>
+
+      <CategoryFilter categories={categories} />
 
       {posts.length === 0 ? (
         <div className="text-center py-16 text-gray-400">
