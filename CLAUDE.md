@@ -1,6 +1,8 @@
 # CLAUDE.md — notion-tech-blog-prd
 
-Notion을 CMS로 사용하는 AI/LLM 기술 블로그 프로젝트. 현재는 기획 문서(PRD·ROADMAP) 단계이며, 이후 Next.js + Notion API로 구현한다.
+Notion을 CMS로 사용하는 AI/LLM 기술 블로그. **MVP 구현·배포 완료** — 라이브 `https://notion-tech-blog-prd.vercel.app`.
+
+> 현재 상태: Next.js App Router 앱(`app/`·`lib/`·`components/`). 구현된 기능 — 홈 글 목록 / 글 상세(`/posts/[slug]`, 블록 렌더) / 카테고리 필터(`/category/[category]`) / 검색. `lib/notion.ts`는 `NOTION_TOKEN` 유무로 실제 Notion API ↔ `lib/sample-data.ts` 샘플 fallback 분기 — **환경변수 0개로 build·배포 가능**. 실 연동은 Vercel 프로젝트 env에 `NOTION_TOKEN`·`NOTION_DATABASE_ID` 주입.
 
 ## Project Context
 
@@ -11,7 +13,7 @@ Notion을 CMS로 사용하는 AI/LLM 기술 블로그 프로젝트. 현재는 �
 
 ## 기술 스택
 
-Next.js 15 (App Router) · TypeScript · Notion API(`@notionhq/client`) · Tailwind CSS · shadcn/ui · Lucide React · Vercel(ISR)
+Next.js 16 (App Router) · TypeScript · Notion API(`@notionhq/client`) · Tailwind CSS · Vercel(ISR). (MVP는 과제용 최소 구현 — shadcn/ui·Lucide 미도입, 필요 시 추가)
 
 ## 작업 규칙
 
