@@ -1,6 +1,6 @@
 import { getPublishedPosts, getCategories } from "@/lib/notion";
-import PostCard from "@/components/PostCard";
 import CategoryFilter from "@/components/CategoryFilter";
+import PostSearch from "@/components/PostSearch";
 
 export const revalidate = 60;
 
@@ -26,11 +26,7 @@ export default async function HomePage() {
           아직 발행된 글이 없습니다.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
+        <PostSearch posts={posts} />
       )}
     </div>
   );
